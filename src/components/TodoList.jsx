@@ -1,3 +1,4 @@
+import TodoGenerator from "./TodoGenerator";
 import TodoGroup from "./TodoGroup";
 
 const TodoList = () => {
@@ -5,6 +6,7 @@ const TodoList = () => {
         <div>
             This is the TodoList Component.
             <TodoGroup />
+            <TodoGenerator />
         </div>
     );
 };
