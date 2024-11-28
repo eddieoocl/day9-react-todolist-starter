@@ -1,7 +1,12 @@
-const TodoList = () => {
-  return (
-      <div>This is the TodoList Component.</div>
-  );
-}
+import TodoGroup from "./TodoGroup";
 
-export default TodoList
+const TodoList = () => {
+    return (
+        <div>
+            This is the TodoList Component.
+            <TodoGroup />
+        </div>
+    );
+};
+
+export default TodoList;

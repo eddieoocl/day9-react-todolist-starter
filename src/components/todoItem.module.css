@@ -1,0 +1,15 @@
+.todo-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-text[done="true"] {
+    text-decoration: line-through;
+}
+
+.todo-remove-button {
+    margin: 10px;
+    height: 20px;
+}
