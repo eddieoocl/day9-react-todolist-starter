@@ -1,10 +1,11 @@
 import TodoGenerator from "./TodoGenerator";
 import TodoGroup from "./TodoGroup";
+import styles from "./todoList.module.css";
 
 const TodoList = () => {
     return (
         <div>
-            This is the TodoList Component.
+            <p className={styles["todo-list-text"]}>Todo List</p>
             <TodoGroup />
             <TodoGenerator />
         </div>

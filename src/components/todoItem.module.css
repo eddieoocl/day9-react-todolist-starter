@@ -3,6 +3,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    max-height: fit-content;
+}
+
+.todo-text {
+    margin: 0px;
 }
 
 .todo-text[done="true"] {
@@ -10,6 +15,6 @@
 }
 
 .todo-remove-button {
-    margin: 10px;
+    margin: 0px 10px;
     height: 20px;
 }

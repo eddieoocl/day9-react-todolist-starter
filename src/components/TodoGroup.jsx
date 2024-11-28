@@ -9,7 +9,7 @@ const TodoGroup = () => {
     return (
         <div className={styles["todo-group"]}>
             {state.map((todo) => (
-                <TodoItem todo={todo} />
+                <TodoItem key={todo.id} todo={todo} />
             ))}
         </div>
     );
