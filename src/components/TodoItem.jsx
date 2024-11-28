@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import styles from "./todoItem.module.css";
+import { TodoContext } from "../App";
 
 const TodoItem = (props) => {
     const {
-        todo: { text, done },
+        todo: { id, text, done },
     } = props;
 
-    const onClickRemove = () => {};
+    const { dispatch } = useContext(TodoContext);
+
+    const onClickRemove = () => {
+        dispatch({ type: "REMOVE", payload: id });
+    };
 
     return (
         <div className={styles["todo-item"]}>
