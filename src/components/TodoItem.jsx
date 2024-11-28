@@ -13,15 +13,20 @@ const TodoItem = (props) => {
         dispatch({ type: "REMOVE", payload: id });
     };
 
+    const onToggleDone = () => {
+        dispatch({ type: "TOGGLE_DONE", payload: id });
+    };
+
     return (
         <div className={styles["todo-item"]}>
-            <p className={styles["todo-text"]} done={Boolean(done).toString()}>
+            <p
+                className={styles["todo-text"]}
+                done={Boolean(done).toString()}
+                onClick={onToggleDone}
+            >
                 {text}
             </p>
-            <button
-                className={styles["todo-remove-button"]}
-                onClick={onClickRemove}
-            >
+            <button className={styles["todo-remove-button"]} onClick={onClickRemove}>
                 X
             </button>
         </div>

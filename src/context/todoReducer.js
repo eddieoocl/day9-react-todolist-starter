@@ -14,6 +14,14 @@ export const todoReducer = (state, action) => {
         case "REMOVE": {
             return state.filter((todo) => todo.id !== payload);
         }
+        case "TOGGLE_DONE": {
+            return state.map((todo) => {
+                if (todo.id === payload) {
+                    todo = { ...todo, done: !todo.done };
+                }
+                return todo;
+            });
+        }
         default:
             return state;
     }
