@@ -5,7 +5,7 @@ import styles from "./todoList.module.css";
 const TodoList = () => {
     return (
         <div>
-            <p className={styles["todo-list-text"]}>Todo List</p>
+            <h2 className={styles["todo-list-text"]}>Todo List</h2>
             <TodoGroup />
             <TodoGenerator />
         </div>

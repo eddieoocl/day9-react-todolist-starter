@@ -12,7 +12,7 @@ export const todoReducer = (state, action) => {
             return [...state, createTodo(payload)];
         }
         case "REMOVE": {
-            return state.filter((todo) => todo.id != payload);
+            return state.filter((todo) => todo.id !== payload);
         }
         default:
             return state;

@@ -1,0 +1,26 @@
+.todo-generator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    margin: 4px 0px;
+}
+
+.todo-input-container {
+    height: 27px;
+    margin: 0px 1px;
+}
+
+.todo-input {
+    font-size: medium;
+    min-width: 280px;
+    padding: 2px 0px;
+}
+
+.todo-input-button {
+    margin: 0px 10px;
+    padding: 0px 20px;
+    border: 0px;
+    color: white;
+    background-color: #6495ee;
+}

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { TodoContext } from "../App";
+import styles from "./todoGenerator.module.css";
 
 const TodoGenerator = () => {
     const [text, setText] = useState("");
@@ -19,9 +20,18 @@ const TodoGenerator = () => {
     };
 
     return (
-        <div>
-            <input type="text" value={text} onChange={handleChange}></input>
-            <button onClick={handleAdd}>Add</button>
+        <div className={styles["todo-generator"]}>
+            <div className={styles["todo-input-container"]}>
+                <input
+                    className={styles["todo-input"]}
+                    type="text"
+                    value={text}
+                    onChange={handleChange}
+                />
+            </div>
+            <button className={styles["todo-input-button"]} onClick={handleAdd}>
+                add
+            </button>
         </div>
     );
 };

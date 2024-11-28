@@ -1,13 +1,19 @@
 .todo-item {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
+    align-items: stretch;
     max-height: fit-content;
+    margin: 4px 0px;
 }
 
 .todo-text {
-    margin: 0px;
+    font-size: medium;
+    margin: 1px 0px;
+    padding: 2px 0px;
+    width: 350px;
+    overflow: auto;
+    border: 1px #a4a4a4 solid;
 }
 
 .todo-text[done="true"] {
@@ -16,5 +22,4 @@
 
 .todo-remove-button {
     margin: 0px 10px;
-    height: 20px;
 }
