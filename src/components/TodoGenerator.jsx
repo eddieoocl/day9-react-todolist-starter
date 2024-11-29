@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { TodoContext } from "../App";
 import styles from "./todoGenerator.module.css";
 import { TodoActionTypes } from "../enums/TodoActionTypes";
+import { addTodo } from "../api/todo";
 
 const TodoGenerator = () => {
     const [text, setText] = useState("");
@@ -16,7 +17,10 @@ const TodoGenerator = () => {
             return;
         }
 
-        dispatch({ type: TodoActionTypes.Add, payload: text });
+        addTodo(text).then((todo) => {
+            dispatch({ type: TodoActionTypes.Add, payload: todo });
+        });
+
         setText("");
     };
 

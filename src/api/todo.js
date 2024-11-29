@@ -9,3 +9,8 @@ export const getTodos = async () => {
     const response = await instance.get("/todo");
     return response.data;
 };
+
+export const addTodo = async (text) => {
+    const response = await instance.post("/todo", { text: text });
+    return response.data;
+};
