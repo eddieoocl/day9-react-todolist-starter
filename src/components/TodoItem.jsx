@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./todoItem.module.css";
 import { TodoContext } from "../App";
 import { TodoActionTypes } from "../enums/TodoActionTypes";
@@ -8,11 +8,15 @@ const TodoItem = (props) => {
     const { todo } = props;
     const { id, text, done } = todo;
 
+    const [loadingRemove, setLoadingRemove] = useState(false);
+
     const { dispatch } = useContext(TodoContext);
 
     const onClickRemove = async () => {
+        setLoadingRemove(true);
         await deleteTodo(todo);
         dispatch({ type: TodoActionTypes.Remove, payload: id });
+        setLoadingRemove(false);
     };
 
     const onToggleDone = async () => {
@@ -33,6 +37,7 @@ const TodoItem = (props) => {
             <button
                 className={styles["todo-remove-button"]}
                 onClick={onClickRemove}
+                disabled={loadingRemove}
             >
                 X
             </button>
