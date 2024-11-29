@@ -5,6 +5,8 @@ import TodoGenerator from "./TodoGenerator";
 import TodoGroup from "./TodoGroup";
 import styles from "./todoList.module.css";
 import { TodoActionTypes } from "../enums/TodoActionTypes";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Progress } from "antd";
 
 const TodoList = () => {
     const { dispatch } = useContext(TodoContext);
@@ -24,8 +26,8 @@ const TodoList = () => {
     return (
         <div>
             <h2 className={styles["todo-list-text"]}>Todo List</h2>
-            {loading ? <p>Loading...</p> : <TodoGroup />}
             <TodoGenerator />
+            {loading ? <LoadingOutlined /> : <TodoGroup />}
         </div>
     );
 };

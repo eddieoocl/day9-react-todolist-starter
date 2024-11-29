@@ -3,9 +3,13 @@ import { TodoContext } from "../App";
 import styles from "./todoGenerator.module.css";
 import { TodoActionTypes } from "../enums/TodoActionTypes";
 import { addTodo } from "../api/todo";
+import { PlusOutlined, FileDoneOutlined } from "@ant-design/icons";
+import { Button, Input } from "antd";
 
 const TodoGenerator = () => {
     const [text, setText] = useState("");
+    const [loadingAdd, setLoadingAdd] = useState(false);
+
     const { dispatch } = useContext(TodoContext);
 
     const handleChange = (event) => {
@@ -17,8 +21,10 @@ const TodoGenerator = () => {
             return;
         }
 
+        setLoadingAdd(true);
         const todo = await addTodo(text);
         dispatch({ type: TodoActionTypes.Add, payload: todo });
+        setLoadingAdd(false);
 
         setText("");
     };
@@ -26,16 +32,23 @@ const TodoGenerator = () => {
     return (
         <div className={styles["todo-generator"]}>
             <div className={styles["todo-input-container"]}>
-                <input
+                <Input
                     className={styles["todo-input"]}
                     type="text"
-                    value={text}
+                    size="medium"
                     onChange={handleChange}
+                    value={text}
+                    prefix={<FileDoneOutlined />}
                 />
             </div>
-            <button className={styles["todo-input-button"]} onClick={handleAdd}>
-                add
-            </button>
+            <Button
+                type="primary"
+                className={styles["todo-input-button"]}
+                onClick={handleAdd}
+                loading={loadingAdd}
+            >
+                add <PlusOutlined />
+            </Button>
         </div>
     );
 };

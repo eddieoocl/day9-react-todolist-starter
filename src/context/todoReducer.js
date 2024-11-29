@@ -14,7 +14,7 @@ export const todoReducer = (state, action) => {
             return payload;
         }
         case TodoActionTypes.Add: {
-            return [...state, payload];
+            return [payload, ...state];
         }
         case TodoActionTypes.Remove: {
             return state.filter((todo) => todo.id !== payload);

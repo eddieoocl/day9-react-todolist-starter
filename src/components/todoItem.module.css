@@ -19,9 +19,12 @@
 
 .todo-text[done="true"] {
     text-decoration: line-through;
+    background-color: rgba(200, 200, 200, 0.2);
+    color: black;
 }
 
 .todo-remove-button {
     margin: 0px 10px;
+    padding: 0px 10px;
     cursor: pointer;
 }
