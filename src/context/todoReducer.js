@@ -1,3 +1,5 @@
+import { TodoActionTypes } from "../enums/TodoActionTypes";
+
 export const initialState = [];
 
 export const createTodo = (text) => {
@@ -8,13 +10,13 @@ export const todoReducer = (state, action) => {
     const { type, payload } = action;
 
     switch (type) {
-        case "ADD": {
+        case TodoActionTypes.Add: {
             return [...state, createTodo(payload)];
         }
-        case "REMOVE": {
+        case TodoActionTypes.Remove: {
             return state.filter((todo) => todo.id !== payload);
         }
-        case "TOGGLE_DONE": {
+        case TodoActionTypes.ToggleDone: {
             return state.map((todo) => {
                 if (todo.id === payload) {
                     todo = { ...todo, done: !todo.done };

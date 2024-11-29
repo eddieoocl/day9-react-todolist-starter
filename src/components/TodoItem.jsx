@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styles from "./todoItem.module.css";
 import { TodoContext } from "../App";
+import { TodoActionTypes } from "../enums/TodoActionTypes";
 
 const TodoItem = (props) => {
     const {
@@ -10,11 +11,11 @@ const TodoItem = (props) => {
     const { dispatch } = useContext(TodoContext);
 
     const onClickRemove = () => {
-        dispatch({ type: "REMOVE", payload: id });
+        dispatch({ type: TodoActionTypes.Remove, payload: id });
     };
 
     const onToggleDone = () => {
-        dispatch({ type: "TOGGLE_DONE", payload: id });
+        dispatch({ type: TodoActionTypes.ToggleDone, payload: id });
     };
 
     return (
@@ -26,7 +27,10 @@ const TodoItem = (props) => {
             >
                 {text}
             </p>
-            <button className={styles["todo-remove-button"]} onClick={onClickRemove}>
+            <button
+                className={styles["todo-remove-button"]}
+                onClick={onClickRemove}
+            >
                 X
             </button>
         </div>
