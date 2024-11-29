@@ -3,7 +3,7 @@ import styles from "./todoItem.module.css";
 import { TodoContext } from "../App";
 import { TodoActionTypes } from "../enums/TodoActionTypes";
 import { deleteTodo, editTodo } from "../api/todo";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 
 const TodoItem = (props) => {
@@ -29,6 +29,15 @@ const TodoItem = (props) => {
 
     return (
         <div className={styles["todo-item"]}>
+            <Button
+                color="success"
+                variant="solid"
+                className={styles["todo-remove-button"]}
+                onClick={onClickRemove}
+                disabled={loadingRemove}
+            >
+                <EditOutlined />
+            </Button>
             <p
                 className={styles["todo-text"]}
                 done={Boolean(done).toString()}
