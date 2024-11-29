@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styles from "./todoItem.module.css";
 import { TodoContext } from "../App";
 import { TodoActionTypes } from "../enums/TodoActionTypes";
-import { deleteTodo } from "../api/todo";
+import { deleteTodo, editTodo } from "../api/todo";
 
 const TodoItem = (props) => {
     const { todo } = props;
@@ -11,13 +11,16 @@ const TodoItem = (props) => {
     const { dispatch } = useContext(TodoContext);
 
     const onClickRemove = () => {
-        deleteTodo(todo).then((response) => {
+        deleteTodo(todo).then(() => {
             dispatch({ type: TodoActionTypes.Remove, payload: id });
         });
     };
 
     const onToggleDone = () => {
-        dispatch({ type: TodoActionTypes.ToggleDone, payload: id });
+        const newTodo = { ...todo, done: !todo.done };
+        editTodo(newTodo).then(() => {
+            dispatch({ type: TodoActionTypes.ToggleDone, payload: newTodo });
+        });
     };
 
     return (

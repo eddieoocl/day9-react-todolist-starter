@@ -21,8 +21,8 @@ export const todoReducer = (state, action) => {
         }
         case TodoActionTypes.ToggleDone: {
             return state.map((todo) => {
-                if (todo.id === payload) {
-                    todo = { ...todo, done: !todo.done };
+                if (todo.id === payload.id) {
+                    todo = payload;
                 }
                 return todo;
             });
