@@ -10,6 +10,9 @@ export const todoReducer = (state, action) => {
     const { type, payload } = action;
 
     switch (type) {
+        case TodoActionTypes.Set: {
+            return payload;
+        }
         case TodoActionTypes.Add: {
             return [...state, createTodo(payload)];
         }
