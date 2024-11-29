@@ -18,7 +18,7 @@ const TodoItem = (props) => {
     const onToggleDone = async () => {
         const newTodo = { ...todo, done: !todo.done };
         const returnedTodo = await editTodo(newTodo);
-        dispatch({ type: TodoActionTypes.ToggleDone, payload: returnedTodo });
+        dispatch({ type: TodoActionTypes.Edit, payload: returnedTodo });
     };
 
     return (

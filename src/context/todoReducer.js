@@ -19,7 +19,7 @@ export const todoReducer = (state, action) => {
         case TodoActionTypes.Remove: {
             return state.filter((todo) => todo.id !== payload);
         }
-        case TodoActionTypes.ToggleDone: {
+        case TodoActionTypes.Edit: {
             return state.map((todo) => {
                 if (todo.id === payload.id) {
                     todo = payload;

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getTodos } from "../api/todo";
 import { TodoContext } from "../App";
 import TodoGenerator from "./TodoGenerator";
@@ -8,10 +8,13 @@ import { TodoActionTypes } from "../enums/TodoActionTypes";
 
 const TodoList = () => {
     const { dispatch } = useContext(TodoContext);
+    const [loading, setLoading] = useState(true);
 
     const init = async () => {
+        setLoading(true);
         const todoList = await getTodos();
         dispatch({ type: TodoActionTypes.Set, payload: todoList });
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -21,7 +24,7 @@ const TodoList = () => {
     return (
         <div>
             <h2 className={styles["todo-list-text"]}>Todo List</h2>
-            <TodoGroup />
+            {loading ? <p>Loading...</p> : <TodoGroup />}
             <TodoGenerator />
         </div>
     );
