@@ -2,16 +2,18 @@ import { useContext } from "react";
 import styles from "./todoItem.module.css";
 import { TodoContext } from "../App";
 import { TodoActionTypes } from "../enums/TodoActionTypes";
+import { deleteTodo } from "../api/todo";
 
 const TodoItem = (props) => {
-    const {
-        todo: { id, text, done },
-    } = props;
+    const { todo } = props;
+    const { id, text, done } = todo;
 
     const { dispatch } = useContext(TodoContext);
 
     const onClickRemove = () => {
-        dispatch({ type: TodoActionTypes.Remove, payload: id });
+        deleteTodo(todo).then((response) => {
+            dispatch({ type: TodoActionTypes.Remove, payload: id });
+        });
     };
 
     const onToggleDone = () => {
