@@ -9,10 +9,13 @@ import { TodoActionTypes } from "../enums/TodoActionTypes";
 const TodoList = () => {
     const { dispatch } = useContext(TodoContext);
 
+    const init = async () => {
+        const todoList = await getTodos();
+        dispatch({ type: TodoActionTypes.Set, payload: todoList });
+    };
+
     useEffect(() => {
-        getTodos().then((todoList) => {
-            dispatch({ type: TodoActionTypes.Set, payload: todoList });
-        });
+        init();
     }, []);
 
     return (

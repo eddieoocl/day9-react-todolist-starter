@@ -10,17 +10,15 @@ const TodoItem = (props) => {
 
     const { dispatch } = useContext(TodoContext);
 
-    const onClickRemove = () => {
-        deleteTodo(todo).then(() => {
-            dispatch({ type: TodoActionTypes.Remove, payload: id });
-        });
+    const onClickRemove = async () => {
+        await deleteTodo(todo);
+        dispatch({ type: TodoActionTypes.Remove, payload: id });
     };
 
-    const onToggleDone = () => {
+    const onToggleDone = async () => {
         const newTodo = { ...todo, done: !todo.done };
-        editTodo(newTodo).then(() => {
-            dispatch({ type: TodoActionTypes.ToggleDone, payload: newTodo });
-        });
+        const returnedTodo = await editTodo(newTodo);
+        dispatch({ type: TodoActionTypes.ToggleDone, payload: returnedTodo });
     };
 
     return (

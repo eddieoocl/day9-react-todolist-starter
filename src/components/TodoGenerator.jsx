@@ -12,14 +12,13 @@ const TodoGenerator = () => {
         setText(event.target.value);
     };
 
-    const handleAdd = () => {
+    const handleAdd = async () => {
         if (text.length === 0) {
             return;
         }
 
-        addTodo(text).then((todo) => {
-            dispatch({ type: TodoActionTypes.Add, payload: todo });
-        });
+        const todo = await addTodo(text);
+        dispatch({ type: TodoActionTypes.Add, payload: todo });
 
         setText("");
     };
