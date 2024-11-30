@@ -6,7 +6,6 @@ import TodoGroup from "./TodoGroup";
 import styles from "./todoList.module.css";
 import { TodoActionTypes } from "../enums/TodoActionTypes";
 import { LoadingOutlined } from "@ant-design/icons";
-import { Progress } from "antd";
 
 const TodoList = () => {
     const { dispatch } = useContext(TodoContext);

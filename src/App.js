@@ -3,7 +3,6 @@ import "./App.css";
 import TodoList from "./components/TodoList";
 import { initialState, todoReducer } from "./context/todoReducer";
 import {
-    Link,
     Navigate,
     Route,
     BrowserRouter as Router,
