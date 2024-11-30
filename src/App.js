@@ -13,6 +13,7 @@ import DoneList from "./components/DoneList";
 import Navigation from "./components/Navigation";
 import { getTodos } from "./api/todo";
 import { TodoActionTypes } from "./enums/TodoActionTypes";
+import HelpPage from "./components/HelpPage";
 
 export const TodoContext = createContext();
 
@@ -36,7 +37,6 @@ function App() {
             <TodoContext.Provider value={{ state, dispatch }}>
                 <Router>
                     <Navigation />
-
                     <Routes>
                         <Route
                             path="/"
@@ -50,6 +50,7 @@ function App() {
                             path={"/done-list"}
                             element={<DoneList loading={loading} />}
                         />
+                        <Route path={"/help"} element={<HelpPage />} />
                         <Route path={"*"} element={<NotFoundPage />} />
                     </Routes>
                 </Router>
