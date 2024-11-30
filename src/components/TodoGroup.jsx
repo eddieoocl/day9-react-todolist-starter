@@ -29,9 +29,7 @@ const TodoGroup = () => {
             {state.length !== 0 ? (
                 <>
                     <Pagination
-                        style={{
-                            padding: "10px 0px",
-                        }}
+                        className={styles["todo-group-pagination"]}
                         current={currentPage}
                         pageSize={ITEMS_PER_PAGE}
                         total={todoItems.length}
@@ -40,9 +38,7 @@ const TodoGroup = () => {
                     {currentItems}
                     <Flex gap="small" wrap>
                         <Progress
-                            style={{
-                                padding: "20px 0px",
-                            }}
+                            className={styles["todo-group-progress"]}
                             type="circle"
                             percent={percentage.toPrecision(3)}
                         />

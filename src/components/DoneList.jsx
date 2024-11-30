@@ -4,6 +4,8 @@ import { List } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import styles from "./doneList.module.css";
 
+const ITEMS_PER_PAGE = 5;
+
 const DoneList = (props) => {
     const { state } = useContext(TodoContext);
     const { loading } = props;
@@ -19,7 +21,7 @@ const DoneList = (props) => {
                 <List
                     className={styles["done-list"]}
                     pagination={{
-                        pageSize: 5,
+                        pageSize: ITEMS_PER_PAGE,
                     }}
                     size="small"
                     bordered

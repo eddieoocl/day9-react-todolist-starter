@@ -9,3 +9,11 @@
 .todo-group-no-todo-text {
     margin: 7px 0px 15px 0px;
 }
+
+.todo-group-pagination {
+    padding: 10px 0px;
+}
+
+.todo-group-progress {
+    padding: 20px 0px;
+}
