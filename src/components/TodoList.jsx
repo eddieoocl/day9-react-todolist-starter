@@ -1,10 +1,26 @@
+import { useContext, useEffect, useState } from "react";
 import TodoGenerator from "./TodoGenerator";
 import TodoGroup from "./TodoGroup";
 import styles from "./todoList.module.css";
 import { LoadingOutlined } from "@ant-design/icons";
+import { getTodos } from "../api/todo";
+import { TodoActionTypes } from "../enums/TodoActionTypes";
+import { TodoContext } from "../App";
 
-const TodoList = (props) => {
-    const { loading } = props;
+const TodoList = () => {
+    const { dispatch } = useContext(TodoContext);
+    const [loading, setLoading] = useState(true);
+
+    const init = async () => {
+        setLoading(true);
+        const todoList = await getTodos();
+        dispatch({ type: TodoActionTypes.Set, payload: todoList });
+        setLoading(false);
+    };
+
+    useEffect(() => {
+        init();
+    }, []);
 
     return (
         <div>
